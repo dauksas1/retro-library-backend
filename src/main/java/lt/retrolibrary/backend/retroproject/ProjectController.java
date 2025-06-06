@@ -42,4 +42,9 @@ public class ProjectController {
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 	
+	@GetMapping("/projects/{id}")
+	public RetroProjectEntity getProjectById(@PathVariable int id) {
+		return projectService.getProjectbyId(id);
+	}
+	
 }

@@ -20,16 +20,18 @@ public class RetroProjectEntity {
 	private String description;
 	private String intro;
 	private String imgUrl;
+	private String status;
 	//private Author Author;
 	
 	
 	
 	
-	public RetroProjectEntity(String name, String intro, String imgUrl , String description) {
+	public RetroProjectEntity(String name, String status, String intro, String imgUrl , String description) {
 		this.name = name;
 		this.intro = intro;
 		this.imgUrl = imgUrl;
 		this.description = description;
+		this.status = status;
 		//Author = author;
 	}
 
@@ -38,6 +40,8 @@ public class RetroProjectEntity {
 	}
 
 
+	
+	
 	public int getId() {
 		return id;
 	}
@@ -87,6 +91,18 @@ public class RetroProjectEntity {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+
+	public String getStatus() {
+		return status;
+	}
+
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	
+	
 
 
 //	public Author getAuthor() {

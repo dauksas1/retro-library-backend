@@ -20,4 +20,8 @@ public class ProjectService {
 		return new ArrayList<RetroProjectEntity>(projectRepository.findAll());
 	}
 
+	public RetroProjectEntity getProjectbyId(int id) {
+		return projectRepository.findById(id).get();
+	}
+
 }

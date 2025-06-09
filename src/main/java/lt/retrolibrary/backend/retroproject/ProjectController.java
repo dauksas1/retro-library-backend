@@ -35,7 +35,7 @@ public class ProjectController {
 		
 		return projectService.getAllProjects()
 				.stream()
-				.filter((s) -> s.getName()
+				.filter((s) -> s.getProjectName()
 								.toLowerCase()
 								.replace(" ", "")
 								.contains(query))

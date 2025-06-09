@@ -1,9 +1,13 @@
 package lt.retrolibrary.backend.retroproject;
 
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lt.retrolibrary.backend.author.AuthorEntity;
 
@@ -11,37 +15,58 @@ import lt.retrolibrary.backend.author.AuthorEntity;
 @Table(name = "Projects")
 public class RetroProjectEntity {
 	
+	
+	@ManyToOne
+	@JoinColumn(name = "authorId")
+	private AuthorEntity author;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String name;
-	private String description;
-	private String intro;
-	private String imgUrl;
-	private String status;
-	//private Author Author;
+	@Column(columnDefinition="TEXT")
+	private String projectSummary;
+	
+	@Column(columnDefinition="TEXT")
+	private String cardIntro;
+	
+	@Column(columnDefinition="TEXT")
+	private String projectIntro;
+	
+	private String projectName;
+	private String projectImgUrl;
+	private String projectStatus;
+	private String youTubeLink;
+	private String patreonLink;
+	private String instaLink;
+	
+	@Column(columnDefinition="TEXT")
+	private String featureList;
 	
 	
-	
-	
-	public RetroProjectEntity(String name, String status, String intro, String imgUrl , String description) {
-		this.name = name;
-		this.intro = intro;
-		this.imgUrl = imgUrl;
-		this.description = description;
-		this.status = status;
-		//Author = author;
-	}
-
-
 	public RetroProjectEntity() {
 	}
 
+	
+	public RetroProjectEntity(int id, String projectName, String projectSummary, String cardIntro, String projectIntro,
+			String projectImgUrl, String projectStatus, String youTubeLink, String patreonLink, String instaLink,
+			String featureList) {
+		super();
+		this.id = id;
+		this.projectName = projectName;
+		this.projectSummary = projectSummary;
+		this.cardIntro = cardIntro;
+		this.projectIntro = projectIntro;
+		this.projectImgUrl = projectImgUrl;
+		this.projectStatus = projectStatus;
+		this.youTubeLink = youTubeLink;
+		this.patreonLink = patreonLink;
+		this.instaLink = instaLink;
+		this.featureList = featureList;
+	}
 
-	
-	
+
+
 	public int getId() {
 		return id;
 	}
@@ -52,75 +77,114 @@ public class RetroProjectEntity {
 	}
 
 
-	public String getName() {
-		return name;
+	public String getProjectName() {
+		return projectName;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProjectName(String projectName) {
+		this.projectName = projectName;
 	}
 
 
-	public String getDescription() {
-		return description;
+	public String getProjectSummary() {
+		return projectSummary;
+	}
+
+
+	public void setProjectSummary(String projectSummary) {
+		this.projectSummary = projectSummary;
+	}
+
+
+	public String getCardIntro() {
+		return cardIntro;
+	}
+
+
+	public void setCardIntro(String cardIntro) {
+		this.cardIntro = cardIntro;
+	}
+
+
+	public String getProjectIntro() {
+		return projectIntro;
+	}
+
+
+	public void setProjectIntro(String projectIntro) {
+		this.projectIntro = projectIntro;
+	}
+
+
+	public String getProjectImgUrl() {
+		return projectImgUrl;
+	}
+
+
+	public void setProjectImgUrl(String projectImgUrl) {
+		this.projectImgUrl = projectImgUrl;
+	}
+
+
+	public String getProjectStatus() {
+		return projectStatus;
+	}
+
+
+	public void setProjectStatus(String projectStatus) {
+		this.projectStatus = projectStatus;
+	}
+
+
+	public String getYouTubeLink() {
+		return youTubeLink;
+	}
+
+
+	public void setYouTubeLink(String youTubeLink) {
+		this.youTubeLink = youTubeLink;
+	}
+
+
+	public String getPatreonLink() {
+		return patreonLink;
+	}
+
+
+	public void setPatreonLink(String patreonLink) {
+		this.patreonLink = patreonLink;
+	}
+
+
+	public String getInstaLink() {
+		return instaLink;
+	}
+
+
+	public void setInstaLink(String instaLink) {
+		this.instaLink = instaLink;
 	}
 
 	
 
-	public String getIntro() {
-		return intro;
+	public String getFeatureList() {
+		return featureList;
 	}
 
 
-	public void setIntro(String intro) {
-		this.intro = intro;
+	public void setFeatureList(String featureList) {
+		this.featureList = featureList;
 	}
 
 
-	public String getImgUrl() {
-		return imgUrl;
+	@Override
+	public String toString() {
+		return "RetroProjectEntity [id=" + id + ", projectName=" + projectName + ", projectSummary=" + projectSummary
+				+ ", cardIntro=" + cardIntro + ", projectIntro=" + projectIntro + ", projectImgUrl=" + projectImgUrl
+				+ ", projectStatus=" + projectStatus + ", youTubeLink=" + youTubeLink + ", patreonLink=" + patreonLink
+				+ ", instaLink=" + instaLink + "]";
 	}
 
-
-	public void setImgUrl(String imgUrl) {
-		this.imgUrl = imgUrl;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public String getStatus() {
-		return status;
-	}
-
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 	
-	
-
-
-//	public Author getAuthor() {
-//		return Author;
-//	}
-//
-//
-//	public void setAuthor(Author author) {
-//		Author = author;
-//	}
-
-
-//	@Override
-//	public String toString() {
-//		return "RetroProject [id=" + id + ", name=" + name + ", Description=" + Description + ", Author=" + Author
-//				+ "]";
-//	}
-//	
-	
-
 }

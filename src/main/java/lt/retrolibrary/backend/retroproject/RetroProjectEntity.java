@@ -37,8 +37,14 @@ public class RetroProjectEntity {
 	private String projectImgUrl;
 	private String projectStatus;
 	private String youTubeLink;
-	private String patreonLink;
+	private String xLink;
+	private String facebookLink;
 	private String instaLink;
+	private String patreonLink;
+	private String payPalLink;
+	private String authorEmailAddress;
+	
+	
 	
 	@Column(columnDefinition="TEXT")
 	private String featureList;
@@ -48,21 +54,26 @@ public class RetroProjectEntity {
 	}
 
 	
-	public RetroProjectEntity(int id, String projectName, String projectSummary, String cardIntro, String projectIntro,
-			String projectImgUrl, String projectStatus, String youTubeLink, String patreonLink, String instaLink,
-			String featureList) {
+	public RetroProjectEntity(AuthorEntity author, int id, String projectSummary, String cardIntro, String projectIntro,
+			String projectName, String projectImgUrl, String projectStatus, String youTubeLink, String xLink,
+			String facebookLink, String instaLink, String patreonLink, String payPalLink, String featureList, String authorEmailAddress) {
 		super();
+		this.author = author;
 		this.id = id;
-		this.projectName = projectName;
 		this.projectSummary = projectSummary;
 		this.cardIntro = cardIntro;
 		this.projectIntro = projectIntro;
+		this.projectName = projectName;
 		this.projectImgUrl = projectImgUrl;
 		this.projectStatus = projectStatus;
 		this.youTubeLink = youTubeLink;
-		this.patreonLink = patreonLink;
+		this.xLink = xLink;
+		this.facebookLink = facebookLink;
 		this.instaLink = instaLink;
+		this.patreonLink = patreonLink;
+		this.payPalLink = payPalLink;
 		this.featureList = featureList;
+		this.authorEmailAddress = authorEmailAddress;
 	}
 
 
@@ -167,7 +178,6 @@ public class RetroProjectEntity {
 	}
 
 	
-
 	public String getFeatureList() {
 		return featureList;
 	}
@@ -175,6 +185,47 @@ public class RetroProjectEntity {
 
 	public void setFeatureList(String featureList) {
 		this.featureList = featureList;
+	}
+	
+	
+	public String getxLink() {
+		return xLink;
+	}
+
+
+	public void setxLink(String xLink) {
+		this.xLink = xLink;
+	}
+
+
+	public String getFacebookLink() {
+		return facebookLink;
+	}
+
+
+	public void setFacebookLink(String facebookLink) {
+		this.facebookLink = facebookLink;
+	}
+
+
+	public String getPayPalLink() {
+		return payPalLink;
+	}
+
+
+	public void setPayPalLink(String payPalLink) {
+		this.payPalLink = payPalLink;
+	}
+
+	
+
+	public String getAuthorEmailAddress() {
+		return authorEmailAddress;
+	}
+
+
+	public void setAuthorEmailAddress(String emailAddress) {
+		this.authorEmailAddress = emailAddress;
 	}
 
 

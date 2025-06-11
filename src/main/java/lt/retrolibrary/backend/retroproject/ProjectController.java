@@ -3,9 +3,13 @@ package lt.retrolibrary.backend.retroproject;
 import java.util.ArrayList;
 import java.util.stream.Collectors;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,5 +50,21 @@ public class ProjectController {
 	public RetroProjectEntity getProjectById(@PathVariable int id) {
 		return projectService.getProjectbyId(id);
 	}
+	
+	@PostMapping("projects/upload")
+	public ResponseEntity<String> uploadProject(@RequestBody RetroProjectEntity project) {
+        System.out.println("Received project: " + project);
+        projectService.uploadProject(project);
+        return ResponseEntity.ok("Project uploaded successfully");
+    }
+	
+	@PutMapping("projects/editProject/{id}")
+	public ResponseEntity<String> updateProject(@RequestBody RetroProjectEntity project) {
+        System.out.println("Received project: " + project);
+        projectService.editProject(project);
+        return ResponseEntity.ok("Project updated successfully");
+    }
+
+
 	
 }

@@ -26,7 +26,7 @@ public class AuthorEntity {
 	}
 	
 	
-	public AuthorEntity(List projectList, int id, String name) {
+	public AuthorEntity(List<RetroProjectEntity> projectList, int id, String name) {
 		super();
 		this.projectList = projectList;
 		this.id = id;
@@ -34,7 +34,7 @@ public class AuthorEntity {
 	}
 
 
-	public List getProjectList() {
+	public List<RetroProjectEntity> getProjectList() {
 		return projectList;
 	}
 

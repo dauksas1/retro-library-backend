@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,14 +29,14 @@ public class ProjectController {
 	
 	
 	@GetMapping("/projects")
-	public ArrayList<RetroProjectEntity> projectList(){
+	public ArrayList<ProjectDTO> projectList(){
 		
 		return projectService.getAllProjects();
 		
 	}
 	
 	@GetMapping("/search/{query}")
-	public ArrayList<RetroProjectEntity> searchProjects(@PathVariable String query){
+	public ArrayList<ProjectDTO> searchProjects(@PathVariable String query){
 		
 		return projectService.getAllProjects()
 				.stream()
@@ -47,23 +48,35 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/projects/{id}")
-	public RetroProjectEntity getProjectById(@PathVariable int id) {
+	public ProjectDTO getProjectById(@PathVariable int id) {
 		return projectService.getProjectbyId(id);
 	}
 	
+	@GetMapping("/projects/myProjects/{id}")
+	public ArrayList<ProjectDTO> getProjectsByAuthorId(@PathVariable int id){
+		return projectService.getProjectsByAuthorId(id);
+	}
+	
 	@PostMapping("projects/upload")
-	public ResponseEntity<String> uploadProject(@RequestBody RetroProjectEntity project) {
+	public ResponseEntity<String> uploadProject(@RequestBody ProjectEntity project) {
         System.out.println("Received project: " + project);
         projectService.uploadProject(project);
         return ResponseEntity.ok("Project uploaded successfully");
     }
 	
 	@PutMapping("projects/editProject/{id}")
-	public ResponseEntity<String> updateProject(@RequestBody RetroProjectEntity project) {
+	public ResponseEntity<String> updateProject(@RequestBody ProjectEntity project) {
         System.out.println("Received project: " + project);
         projectService.editProject(project);
         return ResponseEntity.ok("Project updated successfully");
     }
+	
+	@DeleteMapping("projects/deleteProject/{id}")
+	public ResponseEntity<String> deleteProject(@PathVariable int id){
+		System.out.println("Received project id: " + id);
+		projectService.deleteProject(id);
+		return ResponseEntity.ok("Project id: " + id + "has been deleted from the database");
+	}
 
 
 	

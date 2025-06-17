@@ -13,7 +13,7 @@ import lt.retrolibrary.backend.author.AuthorEntity;
 
 @Entity
 @Table(name = "Projects")
-public class RetroProjectEntity {
+public class ProjectEntity {
 	
 	
 	@ManyToOne
@@ -50,11 +50,11 @@ public class RetroProjectEntity {
 	private String featureList;
 	
 	
-	public RetroProjectEntity() {
+	public ProjectEntity() {
 	}
 
 	
-	public RetroProjectEntity(AuthorEntity author, int id, String projectSummary, String cardIntro, String projectIntro,
+	public ProjectEntity(AuthorEntity author, int id, String projectSummary, String cardIntro, String projectIntro,
 			String projectName, String projectImgUrl, String projectStatus, String youTubeLink, String xLink,
 			String facebookLink, String instaLink, String patreonLink, String payPalLink, String featureList, String authorEmailAddress) {
 		super();
@@ -226,6 +226,17 @@ public class RetroProjectEntity {
 
 	public void setAuthorEmailAddress(String emailAddress) {
 		this.authorEmailAddress = emailAddress;
+	}
+
+	
+	
+	public AuthorEntity getAuthor() {
+		return author;
+	}
+
+
+	public void setAuthor(AuthorEntity author) {
+		this.author = author;
 	}
 
 

@@ -8,13 +8,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lt.retrolibrary.backend.retroproject.RetroProjectEntity;
+import jakarta.persistence.Table;
+import lt.retrolibrary.backend.retroproject.ProjectEntity;
 
 @Entity
+@Table(name = "authors")
 public class AuthorEntity {
 	
 	@OneToMany(mappedBy = "author")
-	private List<RetroProjectEntity> projectList;
+	private List<ProjectEntity> projectList;
 
 	
 	@Id
@@ -26,7 +28,7 @@ public class AuthorEntity {
 	}
 	
 	
-	public AuthorEntity(List<RetroProjectEntity> projectList, int id, String name) {
+	public AuthorEntity(List<ProjectEntity> projectList, int id, String name) {
 		super();
 		this.projectList = projectList;
 		this.id = id;
@@ -34,11 +36,11 @@ public class AuthorEntity {
 	}
 
 
-	public List<RetroProjectEntity> getProjectList() {
+	public List<ProjectEntity> getProjectList() {
 		return projectList;
 	}
 
-	public void setProjectList(ArrayList<RetroProjectEntity> projectList) {
+	public void setProjectList(ArrayList<ProjectEntity> projectList) {
 		this.projectList = projectList;
 	}
 

@@ -47,7 +47,7 @@ public class ProjectController {
 				.collect(Collectors.toCollection(ArrayList::new));
 	}
 	
-	@GetMapping("/projects/{id}")
+	@GetMapping("/user/projects/{id}")
 	public ProjectDTO getProjectById(@PathVariable int id) {
 		return projectService.getProjectbyId(id);
 	}
@@ -59,21 +59,18 @@ public class ProjectController {
 	
 	@PostMapping("projects/upload")
 	public ResponseEntity<String> uploadProject(@RequestBody ProjectEntity project) {
-        System.out.println("Received project: " + project);
         projectService.uploadProject(project);
         return ResponseEntity.ok("Project uploaded successfully");
     }
 	
 	@PutMapping("projects/editProject/{id}")
 	public ResponseEntity<String> updateProject(@RequestBody ProjectEntity project) {
-        System.out.println("Received project: " + project);
         projectService.editProject(project);
         return ResponseEntity.ok("Project updated successfully");
     }
 	
 	@DeleteMapping("projects/deleteProject/{id}")
 	public ResponseEntity<String> deleteProject(@PathVariable int id){
-		System.out.println("Received project id: " + id);
 		projectService.deleteProject(id);
 		return ResponseEntity.ok("Project id: " + id + "has been deleted from the database");
 	}
